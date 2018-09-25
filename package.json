@@ -1,0 +1,24 @@
+{
+  "name": "stanbot",
+  "version": "1.0.0",
+  "description": "Discord bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "R1NZLER_",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "mysql": "^2.15.0",
+    "nekos.life": "^1.0.5",
+    "entities": "^1.1.1",
+    "ms": "^2.1.1",
+    "npm": "^5.8.0",
+    "ontime": "^0.0.4",
+    "request": "^2.86.0",
+    "valid-url": "^1.0.9",
+    "string-similarity": "^1.2.0"
+  }
+}
