@@ -12,7 +12,6 @@ exports.misc = function(client){
         if (command === "seppuku") {
             if (dead.has(message.author.id))
                 return;
-            let member = message.author.id;
             let muted = message.guild.roles.find("name", "Muted");
             let time = `10m`;
             message.member.addRole(muted).catch(console.error);
@@ -20,6 +19,7 @@ exports.misc = function(client){
             let seppuku = imgs.seppuku;
             let randomImg = Math.floor(Math.random()*imgs.seppuku.length);
             let img = seppuku[randomImg];
+            message.delete(120000) //Si vas a borrar, que borre todo :lul:
             message.channel.send({
                 embed: {
                     color: 3447003,

@@ -13,6 +13,7 @@ exports.weeb = function(client){
                 const msg = args.join(" ");
                 async function owoify() {
                     let owo = await neko.getSFWOwOify({text: `${msg}`});
+                    message.delete(60000)
                     message.channel.send({
                     embed: {
                         color: Math.floor(Math.random() * (0xFFFFFF + 1)),
