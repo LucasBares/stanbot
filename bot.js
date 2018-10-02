@@ -29,10 +29,6 @@ client.on("message", async message => {
             //const test = client.emojis.find("name", "test");
 	    //message.react(test);
     //}
-    if (talkedRecently.has(message.author.id))
-        return;
-    if (triggeredChat.has(message.author.id))
-        return;
     const responseObj = {
         "ping": "pong",
         "fortnite": "**fortgay**"
