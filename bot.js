@@ -31,8 +31,7 @@ weeb.weeb(client);
 client.on("message", async message => {
     if (message.author.bot) return;
     if (message.author.id == "355547333288787969"){
-        const cacas = client.emojis.find("name", "poop");
-	    message.react(cacas);
+	    message.react("💩");
     }
     const responseObj = {
         "ping": "pong",
