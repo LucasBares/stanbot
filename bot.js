@@ -13,7 +13,6 @@ const client = new Discord.Client();
 client.login(process.env.BOT_TOKEN);
 let lastTimestamp = Math.floor(Date.now() / 1000);
 
-
 const config = require("./config.json");
 
 client.on("ready", () => {
@@ -23,12 +22,16 @@ client.on("ready", () => {
         type: "STREAMING"
     });
 });
+
+const help = require(`./commands/help.js`);
+help.help(client);
+
 client.on("message", async message => {
     if (message.author.bot) return;
-    //if (message.author.id == "365887397516410881" || message.author.id == "240508300901351424"){
-            //const test = client.emojis.find("name", "test");
-	    //message.react(test);
-    //}
+    if (message.author.id == "355547333288787969"){
+        const cacas = client.emojis.find("name", "poop");
+	    message.react(cacas);
+    }
     const responseObj = {
         "ping": "pong",
         "fortnite": "**fortgay**"
