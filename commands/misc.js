@@ -37,20 +37,22 @@ exports.misc = function(client){
             setTimeout(() => {
                 if (!message.member.roles.some(r =>["Muted"].includes(r.name)))
                     return;
-                message.member.removeRole(muted);
-                message.channel.send({
-                    embed: {
-                        color: 3447003,
-                        author: {
-                            name: client.user.username,
-                            icon_url: client.user.avatarURL
-                        },
-                        description: `<@${message.author.id}> ya eres libre, chamaco meco -.-`
-                    }
-                }).then(message => {
-                    message.delete(60000)
-                });
-            }, ms(time));
+                else{
+                    message.member.removeRole(muted);
+                    message.channel.send({
+                        embed: {
+                            color: 3447003,
+                            author: {
+                                name: client.user.username,
+                                icon_url: client.user.avatarURL
+                            },
+                            description: `<@${message.author.id}> ya eres libre, chamaco meco -.-`
+                        }
+                
+                    }).then(message => {
+                        message.delete(60000)
+                    });
+            }}, ms(time));
         }
     });
 }
