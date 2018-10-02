@@ -1,6 +1,6 @@
-{ "prefix" : "+",
+{ "prefix" : "<",
   "onlinemessage": "AAAAAAAAA",
-  "username": "StanBot",
+  "username": "Stanbot",
   "embed_color": "#009999",
   "requiredRoles": []
 }

@@ -23,3 +23,48 @@ client.on("ready", () => {
         type: "STREAMING"
     });
 });
+client.on("message", async message => {
+    if (message.author.bot) return;
+    //if (message.author.id == "365887397516410881" || message.author.id == "240508300901351424"){
+            //const test = client.emojis.find("name", "test");
+	    //message.react(test);
+    //}
+    if (talkedRecently.has(message.author.id))
+        return;
+    if (triggeredChat.has(message.author.id))
+        return;
+    const responseObj = {
+        "ping": "pong",
+        "fortnite": "**fortgay**"
+    };
+    if (responseObj[message.content]) {
+        message.channel.send(responseObj[message.content]);
+    };
+
+    if (message.content.indexOf(config.prefix) !== 0) return;
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
+    if(command === "test"){
+        message.channel.send(`Chinga tu madre`)
+    }
+    if(command === "birb"){
+        async function birb(){
+            let birbApi = await `https://random.birb.pw/tweet.json/`;
+            request({
+                url: birbApi,
+                json: true,
+            }, (error, response, body) => {
+                if (!error && response.statusCode === 200){
+                    const embed = new Discord.RichEmbed();
+                        embed.setColor(Math.floor(Math.random() * (0xFFFFFF + 1)) || '#007cbf');
+                        embed.setImage(`https://random.birb.pw/img/${body.file}`);
+                    message.channel.send(embed);
+                }else{
+                    console.log(`OOPS, something went wrong`)
+                }
+            });
+        }
+        birb();
+    }
+});
