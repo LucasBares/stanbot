@@ -15,7 +15,7 @@ exports.weeb = function(client){
                     let owo = await neko.getSFWOwOify({text: `${msg}`});
                     message.channel.send({
                     embed: {
-                        color: 3447003,
+                        color: Math.floor(Math.random() * (0xFFFFFF + 1)),
                         author: {
                             name: message.author.username,
                             icon_url: message.author.avatarURL
