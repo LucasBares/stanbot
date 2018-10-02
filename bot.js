@@ -25,6 +25,8 @@ client.on("ready", () => {
 
 const help = require(`./commands/help.js`);
 help.help(client);
+const misc = require(`./commands/misc.js`);
+misc.misc(client);
 const weeb = require(`./commands/weeb.js`);
 weeb.weeb(client);
 
