@@ -11,7 +11,7 @@ exports.misc = function(client){
         if (command === "seppuku") {
             let member = message.author.id;
             let muted = message.guild.roles.find("name", "Muted");
-            let time = `1m`;
+            let time = `10m`;
             message.member.addRole(muted).catch(console.error);
             const sadcat = client.emojis.find("name", "sadcat");
             let seppuku = imgs.seppuku;
@@ -48,7 +48,6 @@ exports.misc = function(client){
                             },
                             description: `<@${message.author.id}> ya eres libre, chamaco meco -.-`
                         }
-                
                     }).then(message => {
                         message.delete(60000)
                     });
