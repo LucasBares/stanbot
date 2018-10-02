@@ -13,8 +13,6 @@ exports.weeb = function(client){
                 const msg = args.join(" ");
                 async function owoify() {
                     let owo = await neko.getSFWOwOify({text: `${msg}`});
-                    console.log(owo);
-                    message.channel.send(owo.owo || owo.msg || `wats dis?`)
                     message.channel.send({
                     embed: {
                         color: 3447003,
