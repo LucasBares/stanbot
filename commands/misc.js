@@ -2,6 +2,7 @@ exports.misc = function(client){
     const config = require("../config.json");
     const imgs = require("../structures/images.json")
     const ms = require("ms")
+    const dead = new Set();
     client.on("message", async message =>{
         if (message.author.bot) return;
         if (message.content.indexOf(config.prefix) !== 0) return;
@@ -9,6 +10,8 @@ exports.misc = function(client){
         const command = args.shift().toLowerCase();
 
         if (command === "seppuku") {
+            if (dead.has(message.author.id))
+                return;
             let member = message.author.id;
             let muted = message.guild.roles.find("name", "Muted");
             let time = `10m`;
@@ -17,7 +20,6 @@ exports.misc = function(client){
             let seppuku = imgs.seppuku;
             let randomImg = Math.floor(Math.random()*imgs.seppuku.length);
             let img = seppuku[randomImg];
-
             message.channel.send({
                 embed: {
                     color: 3447003,
@@ -25,14 +27,13 @@ exports.misc = function(client){
                         name: client.user.username,
                         icon_url: client.user.avatarURL
                     },
-                    //description: `<@${message.author.id}> you've been muted for ${ms(ms(time), {long: true})}`
-            description: `<@${message.author.id}> se suicimató ${sadcat}`,
-            image: {
-                url: img
-            }
+                    description: `<@${message.author.id}> se suicimató ${sadcat}`,
+                    image: {
+                    url: img
+                    }
                 }
             }).then(message => {
-                message.delete(60000)
+                message.delete(120000)
             });
             setTimeout(() => {
                 if (!message.member.roles.some(r =>["Muted"].includes(r.name)))
@@ -52,6 +53,10 @@ exports.misc = function(client){
                         message.delete(60000)
                     });
             }}, ms(time));
+            dead.add(message.author.id);
         }
+    setTimeout(() => {
+        dead.delete(message.author.id);
+    }, ms(`10m`));
     });
 }
