@@ -25,6 +25,8 @@ client.on("ready", () => {
 
 const help = require(`./commands/help.js`);
 help.help(client);
+const weeb = require(`./commands/weeb.js`);
+weeb.weeb(client);
 
 client.on("message", async message => {
     if (message.author.bot) return;
