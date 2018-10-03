@@ -1,6 +1,6 @@
 exports.birb = function(client){
     const request = require('request')
-    
+
     client.on("message", async message => {
         if (message.author.bot) return;
 
